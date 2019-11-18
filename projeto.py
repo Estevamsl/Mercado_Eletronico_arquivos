@@ -33,7 +33,7 @@ class Main(Mercado):
                     opcao = int(input('Digite sua opcão: \033[32m'))
                     print('\033[m')
                     sp(1)
-                    # st("cls")
+                    st("cls")
                     if opcao:
                         break
                 except ValueError:
