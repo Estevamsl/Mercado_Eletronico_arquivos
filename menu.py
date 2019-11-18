@@ -39,6 +39,7 @@ class Menu():
                 ''')
 
     def menu_principal(self): #
+        # self.erro()
         print("""\033[35m[1]\033[m \033[36mCriar arquivo\033[m
 \033[35m[2]\033[m \033[36mListar Compras do supermercado\033[m
 \033[35m[3]\033[m \033[36mComprar\033[m
@@ -48,7 +49,7 @@ class Menu():
 \033[35m[7]\033[m \033[36mRecuperar arquivo deletado\033[m
 \033[35m[8]\033[m \033[36mSair\033[m 
             """)
-    
+
     def menu_secundario(self): #
         print('''[1] Bebidas
 [2] Comidas
@@ -64,7 +65,8 @@ class Menu():
 [3] {self.Alcoólica} Unds Alcoólica..........................................R$50.00
 [4] Voltar ao menu pricipal
                         ''') 
-    
+
+
     def menu_eletronico(self): #
         print(f'''{("PRODUTO")} {("VALOR"):>50}
 [1] {(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}
@@ -75,35 +77,32 @@ class Menu():
 [6] Voltar ao menu de compras
                 ''')   
 
-
-
-
-
-
-
-
     def __listar_compras__(self): # Lista as compras que estão no mercado
         while True:
-            menu1.menu_secundario()
+
+            self.menu_secundario()
+
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
-                    st('cls')
+                    # st('cls')
                     if opcao:
                         break
                 except ValueError:
                     print('Digite uma opção válida')
+
             if opcao == 1:
                 while True:
-                    self.__listar__()
+                    self.__listar__() # chama o método menu()
                     while True:
                         try:
                             opcao = int(input('Digite sua opcão: '))
-                            st('cls')
+                            # st('cls')
                             if opcao:
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
+
                     if opcao == 1:
                         print('Você escolheu Natural')
                     elif opcao == 2:
@@ -114,9 +113,10 @@ class Menu():
                         break
                     else:
                         print('Escolha uma opção de 1 até 4')
-            
+
             elif opcao == 2:
                 print('Você escolheu Comidas')
+                
             elif opcao == 3:
                 print('Você escolheu EletroEletrônico')
                 while True:
@@ -124,15 +124,15 @@ class Menu():
                     while True:
                         try:
                             opcao = int(input('Digite a sua opção: '))
-                            st('cls')
                             if opcao:
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
                             sp(1)
-                            st('cls')
+
                     if opcao == 1:
                         pass
+
             elif opcao == 4:
                 print('Você escolheu EletroDoméstico')
             elif opcao == 5:
