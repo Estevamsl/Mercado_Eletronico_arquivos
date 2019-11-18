@@ -1,7 +1,7 @@
 # TRATANDO MENUs
 try:
 
-    # from os import system as st
+    from os import system as st
     # from interface import Interface
     from time import sleep as sp
     from datetime import date as dt
@@ -85,7 +85,7 @@ class Menu():
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
-                    # st('cls')
+                    st('cls')
                     if opcao:
                         break
                 except ValueError:
@@ -97,7 +97,7 @@ class Menu():
                     while True:
                         try:
                             opcao = int(input('Digite sua opcão: '))
-                            # st('cls')
+                            st('cls')
                             if opcao:
                                 break
                         except ValueError:
@@ -118,13 +118,13 @@ class Menu():
                 print('Você escolheu Comidas')
                 
             elif opcao == 3:
-                print('Você es
                 print('Você escolheu EletroEletrônico')
                 while True:
                     self.menu_eletronico()
                     while True:
                         try:
                             opcao = int(input('Digite a sua opção: '))
+                            st('cls')
                             if opcao:
                                 break
                         except ValueError:
