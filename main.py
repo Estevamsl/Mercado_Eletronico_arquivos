@@ -5,7 +5,7 @@ try:
     # from interface import MetaMain
     from os import(
         
-        # system as st,
+        system as st,
         remove as rm
 
     )
@@ -28,6 +28,7 @@ class Mercado(Meta):
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
+                    st('cls')
                     if opcao:
                         break
                 except ValueError:
@@ -45,6 +46,11 @@ class Mercado(Meta):
                     while True:
                         try:
                             opcao2 = int(input('Digite sua opcão: '))
+
+
+                            st('cls')
+                            
+                            
                             if opcao2:
                                 break
                         except ValueError:
@@ -123,6 +129,11 @@ class Mercado(Meta):
                     while True:
                         try:
                             opcao2 = int(input('Digite sua opcão: '))
+
+
+                            st('cls')
+                            
+                            
                             if opcao2:
                                 break
                         except ValueError:
@@ -217,7 +228,6 @@ class Mercado(Meta):
                 print(f'O seu troco é: R${self.dinheiro - self.tot_compras_em_reais} reais')
                 print(f'Você comprou neste mercado na data: {self.atual}')
                 sp(2.6)
-                # st('cls')
                 with open(arquivo, 'a') as a:
                     a.write('\n')
                     a.write(f'\nTOTAL DAS COMPRAS: {("R$"):>15}{(self.tot_compras_em_reais):>3}.00 Reais')
@@ -225,7 +235,11 @@ class Mercado(Meta):
                     a.write('\n')
                     a.write('\n')
                 self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
+
+                
                 st('cls')
+
+
                 break
 
             else:
