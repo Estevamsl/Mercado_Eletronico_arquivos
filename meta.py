@@ -4,7 +4,7 @@ try:
     from menu import Menu
     from os import(
         
-        system as st, 
+        # system as st, 
         remove as rm
     
     )
