@@ -5,7 +5,7 @@ try:
     # from interface import MetaMain
     from os import(
         
-        system as st,
+        # system as st,
         remove as rm
 
     )
