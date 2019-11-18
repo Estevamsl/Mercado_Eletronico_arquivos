@@ -1,0 +1,94 @@
+# TRATANDO ARQUIVOS
+try:
+
+    from menu import Menu
+    from os import(
+        
+        system as st, 
+        remove as rm
+    
+    )
+    # from interface import MetaMeta
+    # from mostrar_compras import Compras
+
+except (ModuleNotFoundError, ImportWarning, ImportError) as e:
+    print(f'Módulo {e} não encontrado ou importação incorreta')
+# st('cls')
+
+class Meta(Menu):
+    menu3 = Menu()
+    def __init__(self):
+        super().__init__()
+        
+    
+    def __existis__(self, nome): # Ver se o arquivo exista 
+        try:
+            with open(nome, 'r') as a:
+                pass
+        except FileNotFoundError:
+            return False
+        else:
+            return True
+
+    def criar_arquivo(self, nome): # Cria o arquivo
+        try:
+            with open(nome, 'wt') as a:
+                a.write(f'{("PRODUTO")}{("VALOR:"):>30}\n\n')
+        except:
+            print('\033[31mHouve um problema na criação do arquivo\033[m\n')
+        else:
+            print(f'\033[35mArquivo \033[m{nome} \033[35mcriado com sucesso\033[m\n')
+            st('cls')
+
+    def deletar_compras(self, nome): # deleta compras do carrinho de compras do supermercado
+        try: # tenta deletar as compras se o arquivo existir ou se o arquivo não foi deletado (removido)
+            rm(nome)
+            try:
+                with open(nome, 'at') as a: # Se o arquivo existir, ele remove as compras do mercado
+                    a.write(f'{("PRODUTO")}{("VALOR:"):>30}\n\n')
+            except:
+                print(f'\033[31mhouve um problema na remeção das compras no arquivo\033[m {nome}\n')
+        except:
+            print(f'\033[31mHouve um problema na remoção das compras do arquivo \033[m{nome} \033[31mpois o mesmo arquivo não existe ou foi deletado\033[m\n')
+        else:
+            print(f'\033[31mCompras no arquivo: \033[m{nome} \033[31mdeletado com sucesso\033[m\n')
+  
+    def ler_arquivo(self, nome): # Ler o arquivo criado
+        try:
+            a = open(nome, 'rt')
+        except:
+            print('\033[31mErro ao ler o arquivo\033[m\n')
+        else:
+            print(a.read())
+
+    def listar_compras(self): # Lista compras do supermercado
+        while True:
+            print(f'Total de dinheiro para ser gasto no mercado: R${self.dinheiro}')
+            menu3.menu_secundario()
+            while True:
+                try:
+                    opcao = int(input('Digite sua opcão: \033[32m'))
+                    print('\033[m')
+                    st('cls')
+                except ValueError:
+                    print('Digite uma opção válida')
+            menu3.__listar_compras__()
+    
+    def compras_feitas(self, arquivo): # Este método mostra o total de compras que foi feito
+        try:
+            with open(arquivo, 'rt') as a:
+                print(a.read())
+        except:
+            print('\033[31mHouve um problema ao ler o arquivo\033[m\n')
+
+    def inserir_dinheiro(self): # Insere o dinheiro para comprar no supermercado
+        while True:
+            try:
+                dinheiro = float(input('Digite o seu dinheiro: \033[32m'))
+                print('\033[m')
+                if dinheiro:
+                    break
+            except ValueError:
+                print('Digite um dinheiro válido')
+        st('cls')
+        self.dinheiro += dinheiro
