@@ -5,7 +5,7 @@ try:
     from main import Mercado
     from os import(
     
-        # system as st,
+        system as st,
         remove as rm,
         listdir as lt
 
@@ -17,7 +17,7 @@ try:
 except (ModuleNotFoundError, ImportError, ImportWarning):
     print('\033[31mNão foi possível importar os módulos\033[m\n')
 
-# st('cls')
+st('cls')
 class Main(Mercado):
     def __init__(self):
         super().__init__()
