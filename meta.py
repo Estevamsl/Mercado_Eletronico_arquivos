@@ -8,18 +8,14 @@ try:
         remove as rm
     
     )
-    # from interface import MetaMeta
-    # from mostrar_compras import Compras
 
 except (ModuleNotFoundError, ImportWarning, ImportError) as e:
     print(f'Módulo {e} não encontrado ou importação incorreta')
 # st('cls')
 
 class Meta(Menu):
-    menu3 = Menu()
     def __init__(self):
         super().__init__()
-        
     
     def __existis__(self, nome): # Ver se o arquivo exista 
         try:
@@ -38,7 +34,6 @@ class Meta(Menu):
             print('\033[31mHouve um problema na criação do arquivo\033[m\n')
         else:
             print(f'\033[35mArquivo \033[m{nome} \033[35mcriado com sucesso\033[m\n')
-            st('cls')
 
     def deletar_compras(self, nome): # deleta compras do carrinho de compras do supermercado
         try: # tenta deletar as compras se o arquivo existir ou se o arquivo não foi deletado (removido)
@@ -51,6 +46,7 @@ class Meta(Menu):
         except:
             print(f'\033[31mHouve um problema na remoção das compras do arquivo \033[m{nome} \033[31mpois o mesmo arquivo não existe ou foi deletado\033[m\n')
         else:
+            # st('cls')
             print(f'\033[31mCompras no arquivo: \033[m{nome} \033[31mdeletado com sucesso\033[m\n')
   
     def ler_arquivo(self, nome): # Ler o arquivo criado
@@ -64,16 +60,16 @@ class Meta(Menu):
     def listar_compras(self): # Lista compras do supermercado
         while True:
             print(f'Total de dinheiro para ser gasto no mercado: R${self.dinheiro}')
-            menu3.menu_secundario()
+            self.menu_secundario()
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: \033[32m'))
                     print('\033[m')
-                    st('cls')
+                    # st('cls')
                 except ValueError:
                     print('Digite uma opção válida')
-            menu3.__listar_compras__()
-    
+            self.__listar_compras__()
+
     def compras_feitas(self, arquivo): # Este método mostra o total de compras que foi feito
         try:
             with open(arquivo, 'rt') as a:
@@ -90,5 +86,5 @@ class Meta(Menu):
                     break
             except ValueError:
                 print('Digite um dinheiro válido')
-        st('cls')
+        # st('cls')
         self.dinheiro += dinheiro
