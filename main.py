@@ -9,11 +9,10 @@ try:
         remove as rm
 
     )
-    from menu import Menu
 
 except (ModuleNotFoundError, ImportError, ImportWarning):
     print('Módulo não encontrado ou importação incorreta')
-st('cls')
+# st('cls')
 
 class Mercado(Meta):
     def __init__(self):
@@ -23,8 +22,9 @@ class Mercado(Meta):
         self.inserir_dinheiro() # Método da classe Meta() para inserir dinheiro para fazer compras no supermercado
 
         while True:
-            menu1 = Menu() # IntÂncia o Menu()
-            menu1.menu_secundario() # Chama o método menu secundário na classe Menu()
+
+            # menu1 = Menu() # IntÂncia o Menu()
+            self.menu_secundario() # Chama o método menu secundário na classe Menu()
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
@@ -32,7 +32,7 @@ class Mercado(Meta):
                         break
                 except ValueError:
                     print('Digite uma opção válida')
-            st('cls')
+            # st('cls')
             if opcao == 1:
                 while True:
                     print(f'''{("PRODUTO")} {("VALOR"):>60}
@@ -49,7 +49,7 @@ class Mercado(Meta):
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
-                    st('cls')
+                    # st('cls')
 
                     if opcao2 == 4:
                         break
@@ -74,6 +74,8 @@ class Mercado(Meta):
                                         a.write('\n')
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+
+                                
                                 
                         elif opcao2 == 2 and self.Refri > 0:
                             if self.dinheiro >= 0:
@@ -106,10 +108,6 @@ class Mercado(Meta):
             elif opcao == 2:
                 print('Você escolheu Comidas')
 
-
-
-
-
             elif opcao == 3:
                 print('Você escolheu EletroEletrônico')
                 while True: #
@@ -121,6 +119,7 @@ class Mercado(Meta):
 [5] {self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}
 [6] Voltar ao menu de compras
                 ''')
+
                     while True:
                         try:
                             opcao2 = int(input('Digite sua opcão: '))
@@ -128,14 +127,12 @@ class Mercado(Meta):
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
-                    st('cls')
 
                     if opcao2 == 6:
                         print(f'O seu troco é: R${self.dinheiro} reais\n')
                         break
                     elif opcao2 <= 0 or opcao2 > 6:
                         print('Escolha uma opção de 1 até 4')
-                    
                     
                     if self.dinheiro > 0:
                         if opcao2 == 1 and self.SamsungJ8 > 0:
@@ -210,27 +207,26 @@ class Mercado(Meta):
                     else:
                         print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
 
-
-
             elif opcao == 4:
                 print('Você escolheu EletroDoméstico')
             elif opcao == 5:
                 print('Você escolheu Brinquedos')
+
             elif opcao == 6:
-                self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
-                st('cls')
-                sp(0.7)
                 print(f'TOTAL DAS COMPRAS: {("R$")}{(self.tot_compras_em_reais)}.00 Reais')
-                print(f'O seu troco é: R${self.dinheiro} reais')
+                print(f'O seu troco é: R${self.dinheiro - self.tot_compras_em_reais} reais')
                 print(f'Você comprou neste mercado na data: {self.atual}')
                 sp(2.6)
-                st('cls')
+                # st('cls')
                 with open(arquivo, 'a') as a:
                     a.write('\n')
                     a.write(f'\nTOTAL DAS COMPRAS: {("R$"):>15}{(self.tot_compras_em_reais):>3}.00 Reais')
                     a.write(f'\nDIA DAS COMPRAS:    {(self.atual)}\n')
                     a.write('\n')
                     a.write('\n')
+                self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
+                st('cls')
                 break
+
             else:
                 print('Escolha uma opção de 1 até 6')
