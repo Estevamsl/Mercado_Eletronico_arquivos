@@ -16,14 +16,14 @@ try:
 except (ModuleNotFoundError, ImportError, ImportWarning):
     print('\033[31mNão foi possível importar os módulos\033[m\n')
 
-st('cls')
+
 class Main(Mercado, MetaProjeto):
     def __init__(self):
         super().__init__()
 
     def main(self):
-        
-        arquivo = 'arquivo_app/mercado.txt'
+        st('cls')
+        arquivo = 'mercado.txt'
         while True:
             self.menu_principal()
             while True:
@@ -57,8 +57,11 @@ class Main(Mercado, MetaProjeto):
                 try:
                     rm(arquivo) # remove o arquivo
                 except FileNotFoundError:
-                    print('\033[31mNão foi possível encontrar o arquivo pois o mesmo não se encontra no repositório ou foi deletado\033[m\n')
-                    sp(2.5)
+                    print('\033[31mNão foi possível encontrar o arquivo para deletar pois o mesmo não se encontra no repositório ou foi deletado\033[m\n')
+                    sp(4)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
+                else:
+                    print(f'Arquivo {arquivo} deletado com sucesso')
 
             elif opcao == 7:
                 # st('cls') # Não usar esta função, pois ele corrompe o app
