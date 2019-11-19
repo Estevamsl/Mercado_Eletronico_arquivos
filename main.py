@@ -2,7 +2,7 @@ try:
 
     from meta import Meta
     from time import sleep as sp
-    # from interface import MetaMain
+    from interface import MetaMain
     from os import(
         
         system as st,
@@ -14,7 +14,7 @@ except (ModuleNotFoundError, ImportError, ImportWarning):
     print('Módulo não encontrado ou importação incorreta')
 # st('cls')
 
-class Mercado(Meta):
+class Mercado(Meta, MetaMain):
     def __init__(self):
         super().__init__()
 
@@ -48,7 +48,7 @@ class Mercado(Meta):
                             opcao2 = int(input('Digite sua opcão: '))
 
 
-                            st('cls')
+                            # st('cls')
                             
                             
                             if opcao2:
@@ -131,7 +131,7 @@ class Mercado(Meta):
                             opcao2 = int(input('Digite sua opcão: '))
 
 
-                            st('cls')
+                            # st('cls')
                             
                             
                             if opcao2:
@@ -237,10 +237,12 @@ class Mercado(Meta):
                 self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
 
                 
-                st('cls')
+                # st('cls')
 
 
                 break
 
             else:
                 print('Escolha uma opção de 1 até 6')
+
+                 
