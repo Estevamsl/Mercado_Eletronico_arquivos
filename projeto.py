@@ -10,7 +10,6 @@ try:
         listdir as lt
 
     )
-    from meta import Meta
     from time import sleep as sp
     from interface import MetaProjeto
 
@@ -25,7 +24,6 @@ class Main(Mercado, MetaProjeto):
     def main(self):
         
         arquivo = 'arquivo_app/mercado.txt'
-        meta1 = Meta()
         while True:
             self.menu_principal()
             while True:
@@ -33,7 +31,7 @@ class Main(Mercado, MetaProjeto):
                     opcao = int(input('Digite sua opcão: \033[32m'))
                     print('\033[m')
                     sp(1)
-                    # st('cls') # Não usar esta função, pois ele corrompe o app
+                    st('cls') # Não usar esta função, pois ele corrompe o app
                     if opcao:
                         break
                 except ValueError:
