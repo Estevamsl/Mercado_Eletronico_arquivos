@@ -2,33 +2,17 @@
 try:
 
     from os import system as st
-    # from interface import Interface
     from time import sleep as sp
     from datetime import date as dt
+    from inicio import Inicio
+    from interface import MetaMenu
 
 except (ModuleNotFoundError, ImportWarning, ImportError):
     print('Módulo não encontrado ou importação incorreta')
 
-class Menu():
+class Menu(Inicio, MetaMenu):
     def __init__(self):
-        super().__init__()
-        
-        self.atual = dt.today()
-
-        self.senha_principal = 2505
-        
-        self.tot_compras_em_reais = 0
-        self.Natural = 10
-        self.Refri = 10
-        self.Alcoólica = 10
-        self.dinheiro = 0
-
-        self.SamsungJ8 = 20
-        self.SamsungJ7 = 20
-        self.SamsungJ6 = 10
-        self.smartTVLG = 20
-        self.iphone = 30
-        
+        super().__init__()        
 
     def __listar__(self): #
         print(f'''{("PRODUTO")} {("VALOR"):>60}
@@ -66,7 +50,6 @@ class Menu():
 [4] Voltar ao menu pricipal
                         ''') 
 
-
     def menu_eletronico(self): #
         print(f'''{("PRODUTO")} {("VALOR"):>50}
 [1] {(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}
@@ -79,13 +62,11 @@ class Menu():
 
     def __listar_compras__(self): # Lista as compras que estão no mercado
         while True:
-
             self.menu_secundario()
-
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
-                    st('cls')
+                    # st('cls') Não usar essa função pois corrompe o programa
                     if opcao:
                         break
                 except ValueError:
@@ -97,7 +78,7 @@ class Menu():
                     while True:
                         try:
                             opcao = int(input('Digite sua opcão: '))
-                            st('cls')
+                            # st('cls') Não usar essa função pois corrompe o programa
                             if opcao:
                                 break
                         except ValueError:
@@ -124,7 +105,7 @@ class Menu():
                     while True:
                         try:
                             opcao = int(input('Digite a sua opção: '))
-                            st('cls')
+                            # st('cls') Não usar essa função pois corrompe o programa
                             if opcao:
                                 break
                         except ValueError:
