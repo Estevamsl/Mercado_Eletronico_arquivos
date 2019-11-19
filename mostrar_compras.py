@@ -11,7 +11,7 @@ try:
 except (ModuleNotFoundError, ImportWarning, ImportError):
     print('Módulo não encontrado ou importação incorreta')
 
-class Compras():
+class Compras(Menu):
     st('cls')
     def __init__(self):
         super().__init__()
@@ -55,7 +55,7 @@ class Compras():
             elif opcao == 3:
                 print('Você escolheu EletroEletrônico')
                 while True:
-                    menu.menu_eletronico()
+                    self.menu_eletronico()
                     while True:
                         try:
                             opcao = int(input('Digite a sua opção: '))

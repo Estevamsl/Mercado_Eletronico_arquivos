@@ -2,6 +2,7 @@
 try:
 
     from menu import Menu
+    from time import sleep as sp
     from os import(
         
         system as st, 
@@ -12,7 +13,8 @@ try:
 
 except (ModuleNotFoundError, ImportWarning, ImportError) as e:
     print(f'Módulo {e} não encontrado ou importação incorreta')
-# st('cls')
+    sp(1)
+    st('cls') # Não usar esta função, pois ele corrompe o app
 
 class Meta(Menu, MetaMeta):
     def __init__(self):
@@ -20,8 +22,8 @@ class Meta(Menu, MetaMeta):
     
     def __existis__(self, nome): # Ver se o arquivo exista 
         try:
-            with open(nome, 'r') as a:
-                pass
+            a = open(nome, 'r')
+            a.close()
         except FileNotFoundError:
             return False
         else:
@@ -33,8 +35,12 @@ class Meta(Menu, MetaMeta):
                 a.write(f'{("PRODUTO")}{("VALOR:"):>30}\n\n')
         except:
             print('\033[31mHouve um problema na criação do arquivo\033[m\n')
+            sp(1)
+            st('cls') # Não usar esta função, pois ele corrompe o app
         else:
             print(f'\033[35mArquivo \033[m{nome} \033[35mcriado com sucesso\033[m\n')
+            sp(1)
+            st('cls') # Não usar esta função, pois ele corrompe o app
 
     def deletar_compras(self, nome): # deleta compras do carrinho de compras do supermercado
         try: # tenta deletar as compras se o arquivo existir ou se o arquivo não foi deletado (removido)
@@ -44,19 +50,29 @@ class Meta(Menu, MetaMeta):
                     a.write(f'{("PRODUTO")}{("VALOR:"):>30}\n\n')
             except:
                 print(f'\033[31mhouve um problema na remeção das compras no arquivo\033[m {nome}\n')
+                sp(2.5)
+                st('cls') # Não usar esta função, pois ele corrompe o app
             else:
                 print('Não tem compras no seu carrinho')
+                sp(1)
+                st('cls') # Não usar esta função, pois ele corrompe o app
         except:
             print(f'\033[31mHouve um problema na remoção das compras do arquivo \033[m{nome} \033[31mpois o mesmo arquivo não existe ou foi deletado\033[m\n')
+            sp(3)
+            st('cls') # Não usar esta função, pois ele corrompe o app
         else:
             # st('cls')
             print(f'\033[31mCompras no arquivo: \033[m{nome} \033[31mdeletado com sucesso\033[m\n')
+            sp(1)
+            st('cls') # Não usar esta função, pois ele corrompe o app
   
     def ler_arquivo(self, nome): # Ler o arquivo criado
         try:
             a = open(nome, 'rt')
         except:
             print('\033[31mErro ao ler o arquivo\033[m\n')
+            sp(1)
+            st('cls') # Não usar esta função, pois ele corrompe o app
         else:
             print(a.read())
 
@@ -66,16 +82,19 @@ class Meta(Menu, MetaMeta):
                 print(a.read())
         except:
             print('\033[31mHouve um problema ao ler o arquivo\033[m\n')
+            sp(1)
+            st('cls') # Não usar esta função, pois ele corrompe o app
 
     def inserir_dinheiro(self): # Insere o dinheiro para comprar no supermercado
         while True:
             try:
                 dinheiro = float(input('Digite o seu dinheiro: \033[32m'))
                 print('\033[m')
-                # st('cls') # Não usar esta função, pois ele corrompe o app
+                st('cls') # Não usar esta função, pois ele corrompe o app
                 if dinheiro:
                     break
             except ValueError:
                 print('Digite um dinheiro válido')
-        # st('cls')
+                sp(1)
+                st('cls') # Não usar esta função, pois ele corrompe o app
         self.dinheiro += dinheiro

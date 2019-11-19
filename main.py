@@ -12,14 +12,24 @@ try:
 
 except (ModuleNotFoundError, ImportError, ImportWarning):
     print('Módulo não encontrado ou importação incorreta')
-# st('cls')
+# st('cls') # Não usar esta função, pois ele corrompe o app
 
 class Mercado(Meta, MetaMain):
     def __init__(self):
         super().__init__()
 
     def comprar(self, arquivo): # método para comprar coisas no mercado
-        self.inserir_dinheiro() # Método da classe Meta() para inserir dinheiro para fazer compras no supermercado
+        # 
+        try:
+            self.inserir_dinheiro() # Método da classe Meta() para inserir dinheiro para fazer compras no supermercado
+        except (
+
+            ModuleNotFoundError,
+            ImportError, 
+            ImportWarning
+
+        ):
+            print('Houve um erro ao importar o método')
 
         while True:
 
@@ -28,12 +38,12 @@ class Mercado(Meta, MetaMain):
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
-                    st('cls')
+                    st('cls') # Não usar esta função, pois ele corrompe o app
                     if opcao:
                         break
                 except ValueError:
                     print('Digite uma opção válida')
-            # st('cls')
+            # st('cls') Não usar esta função, pois ele corrompe o app
             if opcao == 1:
                 while True:
                     print(f'''{("PRODUTO")} {("VALOR"):>60}
@@ -46,22 +56,21 @@ class Mercado(Meta, MetaMain):
                     while True:
                         try:
                             opcao2 = int(input('Digite sua opcão: '))
-
-
-                            # st('cls')
-                            
-                            
+                            st('cls') # Não usar esta função, pois ele corrompe o app
                             if opcao2:
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
-                    # st('cls')
+                            sp(1)
+                            st('cls') # Não usar esta função, pois ele corrompe o app
 
                     if opcao2 == 4:
                         break
                     elif opcao2 <= 0 or opcao2 > 4:
                         print('Escolha uma opção de 1 até 4')
-                    
+                        sp(1)
+                        st('cls') # Não usar esta função, pois ele corrompe o app
+                
                     
                     if self.dinheiro > 0:
                         if opcao2 == 1 and self.Natural > 0:
@@ -75,11 +84,19 @@ class Mercado(Meta, MetaMain):
                                     print('O estoque de Bebidas Naturais acabou')
                                     self.Natural = 0
                                 else:
-                                    with open(arquivo, 'a+') as a:
-                                        a.write(f'{("Natural")}{("R$3.00"):>30}')
-                                        a.write('\n')
+                                    try:
+                                        with open(arquivo, 'a+') as a:
+                                            a.write(f'{("Natural")}{("R$3.00"):>30}')
+                                            a.write('\n')
+                                    except Exception:
+                                        print('Houve um problema no arquivo')
+                                        sp(1)
+                                        st('cls') # Não usar esta função, pois ele corrompe o app
+
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
 
                                 
                                 
@@ -90,11 +107,18 @@ class Mercado(Meta, MetaMain):
                                 self.dinheiro -= 5
                                 self.tot_compras_em_reais += 5
                                 print(f'Total de troco: R${self.dinheiro} reais\n')
-                                with open(arquivo, 'a+') as a:
-                                    a.write(f'{("Refri")} {("R$5.00"):>31}')
-                                    a.write('\n')
+                                try:
+                                    with open(arquivo, 'a+') as a:
+                                        a.write(f'{("Refri")} {("R$5.00"):>31}')
+                                        a.write('\n')
+                                except Exception:
+                                    print('Houve um problema no arquivo')
+                                    sp(1)
+                                    st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
 
                         elif opcao2 == 3 and self.Alcoólica > 0:
                             if self.dinheiro > 0:
@@ -103,13 +127,18 @@ class Mercado(Meta, MetaMain):
                                 self.dinheiro -= 50
                                 self.tot_compras_em_reais += 50
                                 print(f'Total de troco: R${self.dinheiro} reais\n')
-                                with open(arquivo, 'a+') as a:
-                                    a.write(f'{("Alcoólica")}{("R$50.00"):>28}')
-                                    a.write('\n')
+                                try:
+                                    with open(arquivo, 'a+') as a:
+                                        a.write(f'{("Alcoólica")}{("R$50.00"):>28}')
+                                        a.write('\n')
+                                except Exception:
+                                    print('Houve um problema no arquivo')
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                     else:
                         print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                        sp(1)
+                        st('cls') # Não usar esta função, pois ele corrompe o app
             
             elif opcao == 2:
                 print('Você escolheu Comidas')
@@ -129,15 +158,13 @@ class Mercado(Meta, MetaMain):
                     while True:
                         try:
                             opcao2 = int(input('Digite sua opcão: '))
-
-
-                            # st('cls')
-                            
-                            
+                            st('cls') # Não usar esta função, pois ele corrompe o app
                             if opcao2:
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
+                            sp(1)
+                            st('cls') # Não usar esta função, pois ele corrompe o app
 
                     if opcao2 == 6:
                         print(f'O seu troco é: R${self.dinheiro} reais\n')
@@ -157,11 +184,16 @@ class Mercado(Meta, MetaMain):
                                     print('O estoque de Samsung Galaxy J8 acabou')
                                     self.Natural = 0
                                 else:
-                                    with open(arquivo, 'a') as a:
-                                        a.write(f'{("Samsung Galaxy J8")} {("R$1500.00"):>22}')
-                                        a.write('\n')
+                                    try:
+                                        with open(arquivo, 'a') as a:
+                                            a.write(f'{("Samsung Galaxy J8")} {("R$1500.00"):>22}')
+                                            a.write('\n')
+                                    except Exception:
+                                        print('Houve um problema no arquivo')
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
                                 
                         elif opcao2 == 2 and self.SamsungJ7 > 0:
                             if self.dinheiro >= 0:
@@ -170,11 +202,18 @@ class Mercado(Meta, MetaMain):
                                 self.dinheiro -= 1300
                                 self.tot_compras_em_reais += 1300
                                 print(f'Total de troco: R${self.dinheiro} reais\n')
-                                with open(arquivo, 'a') as a:
-                                    a.write(f'{("Samsung Galaxy J7")} {("R$1300.00"):>22}')
-                                    a.write('\n')
+                                try:
+                                    with open(arquivo, 'a') as a:
+                                        a.write(f'{("Samsung Galaxy J7")} {("R$1300.00"):>22}')
+                                        a.write('\n')
+                                except Exception:
+                                    print('Houve um proble no arquivo')
+                                    sp(1)
+                                    st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
 
                         elif opcao2 == 3 and self.SamsungJ6 > 0:
                             if self.dinheiro > 0:
@@ -183,11 +222,16 @@ class Mercado(Meta, MetaMain):
                                 self.dinheiro -= 1000
                                 self.tot_compras_em_reais += 1000
                                 print(f'Total de troco: R${self.dinheiro} reais\n')
-                                with open(arquivo, 'a') as a:
-                                    a.write(f'{("Samsung Galaxy J6")} {("R$1000.00"):>22}')
-                                    a.write('\n')
+                                try:
+                                    with open(arquivo, 'a') as a:
+                                        a.write(f'{("Samsung Galaxy J6")} {("R$1000.00"):>22}')
+                                        a.write('\n')
+                                except Exception:
+                                    print('Houve um problema no arquivo')
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
 
                         elif opcao2 == 4 and self.iphone > 0:
                             if self.dinheiro >= 0:
@@ -196,11 +240,16 @@ class Mercado(Meta, MetaMain):
                                 self.dinheiro -= 3000
                                 self.tot_compras_em_reais += 3000
                                 print(f'Total de troco: R${self.dinheiro} reais\n')
-                                with open(arquivo, 'a') as a:
-                                    a.write(f'{("Iphone")} {("R$3000.00"):>33}')
-                                    a.write('\n')
+                                try:
+                                    with open(arquivo, 'a') as a:
+                                        a.write(f'{("Iphone")} {("R$3000.00"):>33}')
+                                        a.write('\n')
+                                except Exception:
+                                    print('Houve um problema no arquivo')
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
 
                         elif opcao2 == 5 and self.smartTVLG > 0:
                             if self.dinheiro >= 0:
@@ -209,14 +258,23 @@ class Mercado(Meta, MetaMain):
                                 self.dinheiro -= 2000
                                 self.tot_compras_em_reais += 2000
                                 print(f'Total de troco: R${self.dinheiro} reais\n')
-                                with open(arquivo, 'a') as a:
-                                    a.write(f'{("Smart TV LG")} {("R$2000.00"):>28}')
-                                    a.write('\n')
+                                try:
+                                    with open(arquivo, 'a') as a:
+                                        a.write(f'{("Smart TV LG")} {("R$2000.00"):>28}')
+                                        a.write('\n')
+                                except Exception:
+                                    print('Houve um problema no arquivo')
+                                    sp(1)
+                                    st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                                sp(1)
+                                st('cls') # Não usar esta função, pois ele corrompe o app
 
                     else:
                         print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
+                        sp(1)
+                        st('cls') # Não usar esta função, pois ele corrompe o app
 
             elif opcao == 4:
                 print('Você escolheu EletroDoméstico')
@@ -228,21 +286,28 @@ class Mercado(Meta, MetaMain):
                 print(f'O seu troco é: R${self.dinheiro - self.tot_compras_em_reais} reais')
                 print(f'Você comprou neste mercado na data: {self.atual}')
                 sp(2.6)
-                with open(arquivo, 'a') as a:
-                    a.write('\n')
-                    a.write(f'\nTOTAL DAS COMPRAS: {("R$"):>15}{(self.tot_compras_em_reais):>3}.00 Reais')
-                    a.write(f'\nDIA DAS COMPRAS:    {(self.atual)}\n')
-                    a.write('\n')
-                    a.write('\n')
+                try:
+                    with open(arquivo, 'a') as a:
+                        a.write('\n')
+                        # a.write(f'TOTAL DE DINHEIRO QUE O USUÁRIO INFORMOU: R${(self.dinheiro)}\n')
+                        # a.write(f'TROCO: R${self.tot_compras_em_reais - self.dinheiro}\n')
+                        a.write(f'TOTAL DAS COMPRAS:{("R$"):>15}{(self.tot_compras_em_reais):>3}.00 Reais')
+                        a.write(f'\nDIA DAS COMPRAS:               {(self.atual)}\n')
+                        a.write('\n')
+                        a.write('\n')
+                except Exception:
+                    print('Houve um problema no arquivo')
+                    sp(1)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
                 self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
 
                 
-                # st('cls')
+                st('cls') # Não usar esta função, pois ele corrompe o app
 
 
                 break
 
             else:
                 print('Escolha uma opção de 1 até 6')
-
-                 
+                sp(1)
+                st('cls') # Não usar esta função, pois ele corrompe o app

@@ -66,11 +66,13 @@ class Menu(Inicio, MetaMenu):
             while True:
                 try:
                     opcao = int(input('Digite sua opcão: '))
-                    # st('cls') Não usar essa função pois corrompe o programa
+                    st('cls') # Não usar essa função pois corrompe o programa
                     if opcao:
                         break
                 except ValueError:
                     print('Digite uma opção válida')
+                    sp(1)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
 
             if opcao == 1:
                 while True:
@@ -78,11 +80,13 @@ class Menu(Inicio, MetaMenu):
                     while True:
                         try:
                             opcao = int(input('Digite sua opcão: '))
-                            # st('cls') Não usar essa função pois corrompe o programa
+                            st('cls') # Não usar esta função, pois ele corrompe o app
                             if opcao:
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
+                            sp(1)
+                            st('cls') # Não usar esta função, pois ele corrompe o app
 
                     if opcao == 1:
                         print('Você escolheu Natural')
@@ -105,13 +109,24 @@ class Menu(Inicio, MetaMenu):
                     while True:
                         try:
                             opcao = int(input('Digite a sua opção: '))
-                            # st('cls') Não usar essa função pois corrompe o programa
+                            st('cls') # Não usar essa função pois corrompe o programa
                             if opcao:
                                 break
                         except ValueError:
                             print('Digite uma opção válida')
                             sp(1)
+                            st('cls') # Não usar esta função, pois ele corrompe o app
 
+                    if opcao == 1:
+                        print('Você escolheu Samsung Galaxy J8')
+                    if opcao == 2:
+                        print('Você escolheu Samsung Galaxy J7')
+                    if opcao == 3:
+                        print('Você escolheu Samsung Galaxy J6')
+                    if opcao == 4:
+                        print('Você escolheu Iphone')
+                    if opcao == 5:
+                        print('Você escolheu Smart TV LG')
                     if opcao == 6:
                         break
 
