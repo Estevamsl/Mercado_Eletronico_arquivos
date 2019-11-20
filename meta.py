@@ -32,7 +32,7 @@ class Meta(Menu, MetaMeta):
     def criar_arquivo(self, nome): # Cria o arquivo
         try:
             with open(nome, 'wt') as a:
-                a.write(f'{("PRODUTO")}{("VALOR:"):>30}\n\n')
+                a.write(f'{("PRODUTOS:")}{("VALORES:"):>30}{("QUANTIDADES:"):>30}{("TOTAL:"):>30}\n\n')
         except:
             print('\033[31mHouve um problema na criação do arquivo\033[m\n')
             sp(1)
@@ -47,18 +47,18 @@ class Meta(Menu, MetaMeta):
             rm(nome)
             try:
                 with open(nome, 'at') as a: # Se o arquivo existir, ele remove as compras do mercado
-                    a.write(f'{("PRODUTO")}{("VALOR:"):>30}\n\n')
+                    a.write(f'{("PRODUTOS:")}{("VALORES:"):>30}{("QUANTIDADES:"):>30}{("TOTAL:"):>30}\n\n')
             except:
                 print(f'\033[31mhouve um problema na remeção das compras no arquivo\033[m {nome}\n')
-                sp(2.5)
+                sp(3.5)
                 st('cls') # Não usar esta função, pois ele corrompe o app
             else:
                 print('Não tem compras no seu carrinho')
-                sp(1)
+                sp(1.5)
                 st('cls') # Não usar esta função, pois ele corrompe o app
         except:
-            print(f'\033[31mHouve um problema na remoção das compras do arquivo \033[m{nome} \033[31mpois o mesmo arquivo não existe ou foi deletado\033[m\n')
-            sp(3)
+            print(f'\033[31mHouve um problema na remoção das compras do arquivo \033[m{nome} \033[31mpois o mesmo arquivo não existe no repositório ou foi deletado pelo usuário\033[m\n')
+            sp(6.5)
             st('cls') # Não usar esta função, pois ele corrompe o app
         else:
             # st('cls')
