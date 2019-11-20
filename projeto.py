@@ -37,6 +37,8 @@ class Main(Mercado, MetaProjeto):
                 except ValueError:
                     print('\033[m\033[31mDigite uma opção inteira\033[m')
                     sp(1)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
+                    self.menu_principal() 
 
             if opcao == 1:
                 self.criar_arquivo(arquivo)
@@ -57,17 +59,18 @@ class Main(Mercado, MetaProjeto):
                 try:
                     rm(arquivo) # remove o arquivo
                 except FileNotFoundError:
-                    print('\033[31mNão foi possível encontrar o arquivo para deletar pois o mesmo não se encontra no repositório ou foi deletado\033[m\n')
-                    sp(4)
+                    print(f'\033[31mNão foi possível encontrar o arquivo \033[m{arquivo}\033[31m para deletar pois o mesmo não se encontra no repositório ou foi deletado pelo usuário\033[m\n')
+                    sp(5.5)
                     st('cls') # Não usar esta função, pois ele corrompe o app
                 else:
-                    print(f'Arquivo {arquivo} deletado com sucesso')
+                    print(f'\033[31mArquivo \033[m{arquivo} \033[31mdeletado com sucesso\033[m\n')
+                    sp(1.5)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
 
             elif opcao == 7:
                 # st('cls') # Não usar esta função, pois ele corrompe o app
                 sp(0.6)
             elif opcao == 8:
-                sp(1)
                 print('\033[32mSaindo...\033[m')
                 sp(1)
                 break
