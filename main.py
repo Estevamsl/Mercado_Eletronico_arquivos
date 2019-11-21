@@ -44,14 +44,16 @@ class Mercado(Meta, MetaMain):
                         break
                 except ValueError:
                     print('Digite uma opção válida')
-            # st('cls') Não usar esta função, pois ele corrompe o app
+                    sp(1)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
+                    self.menu_secundario() # Chama o método menu secundário na classe Menu()
             if opcao == 1:
                 while True:
-                    print(f'''{("PRODUTOS:")}{("VALORES:"):>60}{("QUANTIDADES:"):>30}{("TOTAL:"):>30}
-[1] {(self.Natural)} Unds Natural {("R$3.00"):>30}
-[2] {self.Refri} Unds Refri {("R$5.00"):>30}
-[3] {self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}
-[4] Voltar ao menu de compras
+                    print(f'''{("PRODUTOS:")}{("VALORES:"):>28}{("QUANTIDADES:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}
+\033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
+\033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
+\033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
+\033[35m[4]\033[m \033[36mVoltar ao menu de compras\033[m
                 ''')    
 
                     while True:
@@ -64,6 +66,12 @@ class Mercado(Meta, MetaMain):
                             print('Digite uma opção válida')
                             sp(1)
                             st('cls') # Não usar esta função, pois ele corrompe o app
+                            print(f'''{("PRODUTOS:")}{("VALORES:"):>28}{("QUANTIDADES:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}
+\033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
+\033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
+\033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
+\033[35m[4]\033[m \033[36mVoltar ao menu de compras\033[m
+                ''') 
 
                     if opcao2 == 4:
                         break
@@ -78,6 +86,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro >= 0:
                                 print('Você escolheu Natural')
                                 self.qtd_Natural += 1
+                                self.total += self.qtd_Natural
                                 self.Natural -= 1
                                 self.dinheiro -= 3
                                 self.tot_compras_em_reais += 3
@@ -90,8 +99,8 @@ class Mercado(Meta, MetaMain):
                                         if self.qtd_Natural > 0: # se tiver compras feitas em smasung j8, então...
                                             if self.qtd_Natural > 1:
                                                 try:
-                                                    with open(arquivo, 'a') as a:
-                                                        a.write(f'{("Natural")} {("R$3.00"):>22} {(self.qtd_Natural):>22}')
+                                                    with open(arquivo, 'w') as a:
+                                                        a.write(f'{("Natural")} {("R$3.00"):>29} {(self.qtd_Natural):>25}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -100,15 +109,15 @@ class Mercado(Meta, MetaMain):
                                             else:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("Natural")} {("R$3.00"):>22} {(self.qtd_Natural):>22}')
+                                                        a.write(f'{("Natural")} {("R$3.00"):>29} {(self.qtd_Natural):>25}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
                                                     sp(1)
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
-                                    except Exception:
-                                        print('Houve um problema no arquivo')
+                                    except Exception: # Está dando erro
+                                        print('\033[31mHouve um problema no arquivo\033[m')
 
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
@@ -121,6 +130,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro >= 0:
                                 print('Você escolheu Refri')
                                 self.qtd_Refri += 1
+                                self.total += self.qtd_Refri
                                 self.Refri -= 1
                                 self.dinheiro -= 5
                                 self.tot_compras_em_reais += 5
@@ -134,7 +144,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_Refri > 1:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("Refri")} {("R$5.00"):>22} {(self.qtd_Refri):>22}')
+                                                        a.write(f'{("Refri")} {("R$5.00"):>31} {(self.qtd_Refri):>25}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -143,15 +153,15 @@ class Mercado(Meta, MetaMain):
                                             else:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("Refri")} {("R$5.00"):>22} {(self.qtd_Refri):>22}')
+                                                        a.write(f'{("Refri")} {("R$5.00"):>31} {(self.qtd_Refri):>25}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
                                                     sp(1)
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
-                                    except Exception:
-                                        print('Houve um problema no arquivo')
+                                    except Exception: # Está dando erro
+                                        print('\033[31mHouve um problema no arquivo\033[m')
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                                 sp(1)
@@ -161,6 +171,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro > 0:
                                 print('Você escolheu Alcoólica')
                                 self.qtd_Alcoólica += 1
+                                self.total += self.qtd_Alcoólica
                                 self.Alcoólica -= 1
                                 self.dinheiro -= 50
                                 self.tot_compras_em_reais += 50
@@ -174,7 +185,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_Alcoólica > 1:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("Alcoólica")} {("R$50.00"):>22} {(self.qtd_Alcoólica):>22}')
+                                                        a.write(f'{("Alcoólica")} {("R$50.00"):>28} {(self.qtd_Alcoólica):>24}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -183,15 +194,15 @@ class Mercado(Meta, MetaMain):
                                             else:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("Alcoólica")} {("R$50.00"):>22} {(self.qtd_Alcoólica):>22}')
+                                                        a.write(f'{("Alcoólica")} {("R$50.00"):>28} {(self.qtd_Alcoólica):>24}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
                                                     sp(1)
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
-                                    except Exception:
-                                        print('Houve um problema no arquivo')
+                                    except Exception: # Está dando erro
+                                        print('\033[31mHouve um problema no arquivo\033[m')
                                         sp(1)
                                         st('cls') # Não usar esta função, pois ele corrompe o app
 
@@ -209,12 +220,12 @@ class Mercado(Meta, MetaMain):
                 print('Você escolheu EletroEletrônico')
                 while True: #
                     print(f'''{("PRODUTO")} {("VALOR"):>50}
-[1] {(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}
-[2] {self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}
-[3] {self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}
-[4] {self.iphone} Unds Iphone  {("R$3000.00"):>40}
-[5] {self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}
-[6] Voltar ao menu de compras
+\033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
+\033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
+\033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
+\033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
+\033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
+\033[35m[6]\033[m \033[36mVoltar ao menu de compras\033[m
                 ''')
 
                     while True:
@@ -227,6 +238,14 @@ class Mercado(Meta, MetaMain):
                             print('Digite uma opção válida')
                             sp(1)
                             st('cls') # Não usar esta função, pois ele corrompe o app
+                            print(f'''{("PRODUTO")} {("VALOR"):>50}
+\033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
+\033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
+\033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
+\033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
+\033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
+\033[35m[6]\033[m \033[36mVoltar ao menu de compras\033[m
+                ''')
 
                     if opcao2 == 6:
                         print(f'O seu troco é: R${self.dinheiro} reais\n')
@@ -239,6 +258,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro >= 0:
                                 print('Você escolheu Samsung Galaxy J8')
                                 self.qtd_SamsungJ8 += 1
+                                self.total += self.qtd_SamsungJ8
                                 self.SamsungJ8 -= 1
                                 self.dinheiro -= 1500
                                 self.tot_compras_em_reais += 1500
@@ -269,7 +289,9 @@ class Mercado(Meta, MetaMain):
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
                                     except Exception:
-                                        print('Houve um problema no arquivo')
+                                        print('\033[31mHouve um problema no arquivo\033[m')
+                                        sp(1)
+                                        st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                                 sp(1)
@@ -279,6 +301,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro >= 0:
                                 print('Você escolheu Samsung Galaxy J7')
                                 self.qtd_SamsungJ7 += 1
+                                self.total += self.qtd_SamsungJ7
                                 self.SamsungJ7 -= 1
                                 self.dinheiro -= 1300
                                 self.tot_compras_em_reais += 1300
@@ -309,7 +332,9 @@ class Mercado(Meta, MetaMain):
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
                                     except Exception:
-                                        print('Houve um problema no arquivo')
+                                        print('\033[31mHouve um problema no arquivo\033[m')
+                                        sp(1)
+                                        st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                                 sp(1)
@@ -319,6 +344,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro > 0:
                                 print('Você escolheu Samsung Galaxy J6')
                                 self.qtd_SamsungJ6 += 1
+                                self.total += self.qtd_SamsungJ6
                                 self.SamsungJ6 -= 1
                                 self.dinheiro -= 1000
                                 self.tot_compras_em_reais += 1000
@@ -349,7 +375,9 @@ class Mercado(Meta, MetaMain):
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
                                     except Exception:
-                                        print('Houve um problema no arquivo')
+                                        print('\033[31mHouve um problema no arquivo\033[m')
+                                        sp(1)
+                                        st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                                 sp(1)
@@ -359,6 +387,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro >= 0:
                                 print('Você escolheu Iphone')
                                 self.qtd_iphone += 1
+                                self.total += self.qtd_iphone
                                 self.iphone -= 1
                                 self.dinheiro -= 3000
                                 self.tot_compras_em_reais += 3000
@@ -372,7 +401,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_iphone > 1:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("iphone")} {("R$3000.00"):>22} {(self.qtd_iphone):>22}')
+                                                        a.write(f'{("iphone")} {("R$3000.00"):>33} {(self.qtd_iphone):>22}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -381,7 +410,7 @@ class Mercado(Meta, MetaMain):
                                             else:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("iphone")} {("R$3000.00"):>22} {(self.qtd_iphone):>22}')
+                                                        a.write(f'{("iphone")} {("R$3000.00"):>33} {(self.qtd_iphone):>22}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -389,7 +418,9 @@ class Mercado(Meta, MetaMain):
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
                                     except Exception:
-                                        print('Houve um problema no arquivo')
+                                        print('\033[31mHouve um problema no arquivo\033[m')
+                                        sp(1)
+                                        st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                                 sp(1)
@@ -399,6 +430,7 @@ class Mercado(Meta, MetaMain):
                             if self.dinheiro >= 0:
                                 print('Você escolheu Smart TV LG')
                                 self.qtd_smartTVLG += 1
+                                self.total += self.qtd_smartTVLG
                                 self.smartTVLG -= 1
                                 self.dinheiro -= 2000
                                 self.tot_compras_em_reais += 2000
@@ -412,7 +444,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_smartTVLG > 1:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("smart TV LG")} {("R$2000.00"):>22} {(self.qtd_smartTVLG):>22}')
+                                                        a.write(f'{("smart TV LG")} {("R$2000.00"):>28} {(self.qtd_smartTVLG):>22}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -421,7 +453,7 @@ class Mercado(Meta, MetaMain):
                                             else:
                                                 try:
                                                     with open(arquivo, 'a') as a:
-                                                        a.write(f'{("smart TV LG")} {("R$2000.00"):>22} {(self.qtd_smartTVLG):>22}')
+                                                        a.write(f'{("smart TV LG")} {("R$2000.00"):>28} {(self.qtd_smartTVLG):>22}')
                                                         a.write('\n')
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
@@ -429,7 +461,9 @@ class Mercado(Meta, MetaMain):
                                                     st('cls') # Não usar esta função, pois ele corrompe o app
 
                                     except Exception:
-                                        print('Houve um problema no arquivo')
+                                        print('\033[31mHouve um problema no arquivo\033[m')
+                                        sp(1)
+                                        st('cls') # Não usar esta função, pois ele corrompe o app
                             else:
                                 print(f'Você não pode comprar mais poque o seu dinheiro é: R${self.dinheiro} reais')
                                 sp(1)
@@ -449,151 +483,60 @@ class Mercado(Meta, MetaMain):
                 # Mercado.total_compras = self.qtd_Natural + self.qtd_Refri + self.qtd_Alcoólica + (self.qtd_SamsungJ8 + self.qtd_SamsungJ7 + self.qtd_SamsungJ6 + self.qtd_iphone + self.qtd_smartTVLG)
                 print(f'O seu troco é: R${self.dinheiro - self.tot_compras_em_reais} reais')
                 print(f'Você comprou neste mercado na data: {self.atual}')
-                # print(f'QUANTIDADE TOTAL DAS COMPRAS: {self.Mercado.total_compras}')
+                if self.total > 0:
+                    if self.total > 1:
+                        print(f'QUANTIDADE TOTAL DAS COMPRAS: {(self.total)}\n')
+                    else:
+                        print(f'QUANTIDADE TOTAL DA COMPRA: {(self.total)}\n')
                 sp(2.6)
                 try:
                     with open(arquivo, 'a') as a:
-                        # if self.qtd_Natural > 0:
-                        #     if self.qtd_Natural > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_Natural} COMPRAS DE BEBIDAS NATURAIS\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_Natural} COMPRA DE BEBIDA NATURAl\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        # if self.qtd_Refri > 0:
-                        #     if self.qtd_Refri > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_Refri} COMPRAS DE BEBIDAS Refri\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_Refri} COMPRA DE BEBIDA Refri\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        # if self.qtd_Alcoólica > 0:
-                        #     if self.qtd_Alcoólica > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_Alcoólica} COMPRAS DE BEBIDAS Alcoólica\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_Alcoólica} COMPRA DE BEBIDA Alcoólica\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-
-                        # if self.qtd_SamsungJ8 > 0:
-                        #     if self.qtd_SamsungJ8 > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_SamsungJ8} COMPRAS DE SamsungJ8\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_SamsungJ8} COMPRA DE SamsungJ8\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        # if self.qtd_SamsungJ7 > 0:
-                        #     if self.qtd_SamsungJ7 > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_SamsungJ7} COMPRAS DE SamsungJ7\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_SamsungJ7} COMPRA DE SamsungJ7\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        # if self.qtd_SamsungJ6 > 0:
-                        #     if self.qtd_SamsungJ6 > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_SamsungJ6} COMPRAS DE SamsungJ6\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_SamsungJ6} COMPRA DE SamsungJ6\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        # if self.qtd_iphone > 0:
-                        #     if self.qtd_iphone > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_iphone} COMPRAS DE Iphone')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_iphone} COMPRA DE Iphone\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        # if self.qtd_smartTVLG > 0:
-                        #     if self.qtd_smartTVLG > 1:
-                        #         try:
-                        #             a.write(f'\nFORAM {self.qtd_smartTVLG} COMPRAS DE smart TV LG\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-                        #     else:
-                        #         try:
-                        #             a.write(f'\nFOi {self.qtd_smartTVLG} COMPRA DE smart TV LG\n')
-                        #         except Exception:
-                        #             print('\033[31mHouve um problema\033[m')
-                        #             sp(1)
-                        #             st('cls') # Não usar esta função, pois ele corrompe o app
-
-
-                        a.write('\n')
-                        # a.write(f'TOTAL DE DINHEIRO QUE O USUÁRIO INFORMOU: R${(self.dinheiro)}\n')
-                        # a.write(f'TROCO: R${self.tot_compras_em_reais - self.dinheiro}\n')
-                        a.write(f'TOTAL DAS COMPRAS:{("R$"):>15}{(self.tot_compras_em_reais):>3}.00 Reais')
-                        a.write(f'\nDIA DAS COMPRAS:               {(self.atual)}')
-                        a.write(f'\nQUANTIDADE TOTAL DAS COMPRAS: {(self.subtotal):>15}')
+                        if self.total == 0:
+                            a.write('\n')
+                            # a.write(f'TOTAL DE DINHEIRO QUE O USUÁRIO INFORMOU: R${(self.dinheiro)}\n')
+                            # a.write(f'TROCO: R${self.tot_compras_em_reais - self.dinheiro}\n')
+                            a.write(f'TOTAL GASTO NA COMPRA:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00 Reais\n')
+                            a.write(f'DIA DA COMPRA:                                                                                    {(self.atual)}\n')
+                            a.write('=-='*36)
+                            a.write('\n')
+                        if self.total > 0:
+                            if self.total > 1:
+                                try:
+                                    a.write(f'\nQUANTIDADE TOTAL DAS COMPRAS: {(self.total):>22} COMPRAS\n')
+                                    a.write(f'TOTAL GASTO NAS COMPRAS:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00 Reais\n')
+                                    a.write(f'DIA DAS COMPRAS:                                                                                  {(self.atual)}\n')
+                                    a.write('=-='*36)
+                                    a.write('\n')
+                                except:
+                                    print('\033[31mHouve um erro\033[m')
+                                    sp(1)
+                                    st('cls') # Não usar esta função, pois ele corrompe o app
+                            else:
+                                try:
+                                    a.write(f'\nQUANTIDADE TOTAL DA COMPRA: {(self.total):>22} COMPRA\n')
+                                    a.write(f'TOTAL GASTO NA COMPRA:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00 Reais\n')
+                                    a.write(f'DIA DA COMPRA:                                                                                    {(self.atual)}\n')
+                                    a.write('=-='*36)
+                                    a.write('\n')
+                                    a.write('\n')
+                                except:
+                                    print('\033[31mHouve um erro\033[m')
+                                    sp(1)
+                                    st('cls') # Não usar esta função, pois ele corrompe o app
                         a.write('\n')
                         a.write('\n')
-                except Exception:
-                    print('Houve um problema no arquivo')
-                    sp(1)
+
+                except Exception: # ESTÁ DANDO ERRO AQUI
+
+                    print('\033[31mHouve um problema no arquivo\033[m')
+                    # sp(1)
                     st('cls') # Não usar esta função, pois ele corrompe o app
                 self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
 
                 
                 st('cls') # Não usar esta função, pois ele corrompe o app
 
-
+                self.total = 0
                 break
 
             else:

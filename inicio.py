@@ -36,3 +36,6 @@ class Inicio():
         self.qtd_SamsungJ6 = 0
         self.qtd_smartTVLG = 0
         self.qtd_iphone = 0
+
+        # ----------TOTAL DE TODAS AS QUANTIDADE DE COMPRAS----------
+        self.total = 0

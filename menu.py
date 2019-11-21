@@ -16,10 +16,10 @@ class Menu(Inicio, MetaMenu):
 
     def __listar__(self): #
         print(f'''{("PRODUTO")} {("VALOR"):>60}
-[1] {(self.Natural)} Unds Natural {("R$3.00"):>30}
-[2] {self.Refri} Unds Refri {("R$5.00"):>30}
-[3] {self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}
-[4] Voltar ao menu pricipal
+\033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
+\033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
+\033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
+\033[35m[4]\033[m \033[36mVoltar ao menu pricipal\033[m
                 ''')
 
     def menu_principal(self): #
@@ -35,12 +35,12 @@ class Menu(Inicio, MetaMenu):
             """)
 
     def menu_secundario(self): #
-        print('''[1] Bebidas
-[2] Comidas
-[3] EletroEletrônico
-[4] EletroDoméstico
-[5] Brinquedos
-[6] Sair
+        print('''\033[35m[1]\033[m \033[36mBebidas\033[m
+\033[35m[2]\033[m \033[36mComidas\033[m
+\033[35m[3]\033[m \033[36mEletroEletrônico\033[m
+\033[35m[4]\033[m \033[36mEletroDoméstico\033[m
+\033[35m[5]\033[m \033[36mBrinquedos\033[m
+\033[35m[6]\033[m \033[36mSair\033[m
                         ''')
 
     def menu_terciario(self): #
@@ -52,12 +52,12 @@ class Menu(Inicio, MetaMenu):
 
     def menu_eletronico(self): #
         print(f'''{("PRODUTO")} {("VALOR"):>50}
-[1] {(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}
-[2] {self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}
-[3] {self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}
-[4] {self.iphone} Unds Iphone  {("R$3000.00"):>40}
-[5] {self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}
-[6] Voltar ao menu de compras
+\033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
+\033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
+\033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
+\033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
+\033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
+\033[35m[6]\033[m \033[36mVoltar ao menu de compras
                 ''')   
 
     def __listar_compras__(self): # Lista as compras que estão no mercado

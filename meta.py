@@ -32,7 +32,21 @@ class Meta(Menu, MetaMeta):
     def criar_arquivo(self, nome): # Cria o arquivo
         try:
             with open(nome, 'wt') as a:
-                a.write(f'{("PRODUTOS:")}{("VALORES:"):>30}{("QUANTIDADES:"):>30}{("TOTAL:"):>30}\n\n')
+                if self.total > 1:
+                    a.write('*-*'*36)
+                    a.write(f'\n{("PRODUTOS:")}{("VALORES:"):>28}{("QUANTIDADES:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}\n')
+                    a.write('*-*'*36)
+                    a.write('\n\n')
+                    a.write('=-='*36)
+                    a.write('\n')
+                else:
+                    a.write('*-*'*36)
+                    a.write(f'\n{("PRODUTO:")}{("VALOR:"):>28}{("QUANTIDADE:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}\n')
+                    a.write('*-*'*36)
+                    a.write('\n\n')
+                    a.write('=-='*36)
+                    a.write('\n')
+                
         except:
             print('\033[31mHouve um problema na criação do arquivo\033[m\n')
             sp(1)
@@ -47,7 +61,20 @@ class Meta(Menu, MetaMeta):
             rm(nome)
             try:
                 with open(nome, 'at') as a: # Se o arquivo existir, ele remove as compras do mercado
-                    a.write(f'{("PRODUTOS:")}{("VALORES:"):>30}{("QUANTIDADES:"):>30}{("TOTAL:"):>30}\n\n')
+                    if self.total > 1:
+                        a.write('*-*'*36)
+                        a.write(f'\n{("PRODUTOS:")}{("VALORES:"):>28}{("QUANTIDADES:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}\n')
+                        a.write('*-*'*36)
+                        a.write('\n\n')
+                        a.write('=-='*36)
+                        a.write('\n')
+                    else:
+                        a.write('*-*'*36)
+                        a.write(f'\n{("PRODUTO:")}{("VALOR:"):>28}{("QUANTIDADE:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}\n')
+                        a.write('*-*'*36)
+                        a.write('\n\n')
+                        a.write('=-='*36)
+                        a.write('\n')                    
             except:
                 print(f'\033[31mhouve um problema na remeção das compras no arquivo\033[m {nome}\n')
                 sp(3.5)
