@@ -104,9 +104,24 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_Natural > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
-                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("Natural")} {("R$3.00"):>29} {(self.qtd_Natural):>25}')
                                                         a.write('\n')
+                                                        # troca = a.replace(('Natural', "")
+                                                        # if self.qtd_Natural > 1:
+                                                        #     a.write(troca)
+                                                        # else:
+                                                            
+                                                        #     a.write('\n')
+
+                                                    # with open (arquivo, 'r+') as a:
+                                                    #     d = a.readlines() 
+                                                        
+                                                    #     for i in d:
+                                                    #         if i != 'Natural':
+                                                    #             a.write(f'{("Natural")} {("R$3.00"):>29} {(self.qtd_Natural):>25}')
+                                                    #             a.write('\n')
+                                                    #             a.truncate()
+
                                                 except Exception:
                                                     print('\033[31mHouve um problema\033[m')
                                                     sp(1)
@@ -153,6 +168,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_Refri > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("Refri")} {("R$5.00"):>31} {(self.qtd_Refri):>25}')
                                                         a.write('\n')
                                                 except Exception:
@@ -198,6 +214,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_Alcoólica > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("Alcoólica")} {("R$50.00"):>28} {(self.qtd_Alcoólica):>24}')
                                                         a.write('\n')
                                                 except Exception:
@@ -289,6 +306,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_SamsungJ8 > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("Samsung Galaxy J8")} {("R$1500.00"):>22} {(self.qtd_SamsungJ8):>22}')
                                                         a.write('\n')
                                                 except Exception:
@@ -336,6 +354,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_SamsungJ7 > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("Samsung Galaxy J7")} {("R$1300.00"):>22} {(self.qtd_SamsungJ7):>22}')
                                                         a.write('\n')
                                                 except Exception:
@@ -383,6 +402,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_SamsungJ6 > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("Samsung Galaxy J6")} {("R$1000.00"):>22} {(self.qtd_SamsungJ6):>22}')
                                                         a.write('\n')
                                                 except Exception:
@@ -430,6 +450,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_iphone > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("iphone")} {("R$3000.00"):>33} {(self.qtd_iphone):>22}')
                                                         a.write('\n')
                                                 except Exception:
@@ -477,6 +498,7 @@ class Mercado(Meta, MetaMain):
                                             if self.qtd_smartTVLG > 1:
                                                 try:
                                                     with open(arquivo, 'a+') as a:
+                                                        self.total -= 1 # Pode ser que não de certo
                                                         a.write(f'{("smart TV LG")} {("R$2000.00"):>28} {(self.qtd_smartTVLG):>22}')
                                                         a.write('\n')
                                                 except Exception:
