@@ -514,7 +514,14 @@ class Mercado(Meta, MetaMain):
 
             elif opcao == 6:
                 # Mercado.total_compras = self.qtd_Natural + self.qtd_Refri + self.qtd_Alcoólica + (self.qtd_SamsungJ8 + self.qtd_SamsungJ7 + self.qtd_SamsungJ6 + self.qtd_iphone + self.qtd_smartTVLG)
-                print(f'O seu troco é: R${self.dinheiro - self.tot_compras_em_reais} reais')
+                
+                
+                
+                print(f'O seu troco é: R${self.dinheiro} reais')
+                
+                
+                
+                
                 print(f'Você comprou neste mercado na data: {self.atual}')
                 if self.total > 0:
                     if self.total > 1:
