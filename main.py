@@ -20,47 +20,21 @@ except (ModuleNotFoundError, ImportError, ImportWarning):
     print('Módulo não encontrado ou importação incorreta')
 # st('cls') # Não usar esta função, pois ele corrompe o app
 
-class Mercado(Meta, MetaMain):
+class Mercado(Meta, MetaMain, ABC):
     total_compras = 0
     def __init__(self):
         super().__init__()
 
-    def comprar(self, arquivo): # método para comprar coisas no mercado
-        # 
-        try:
-            self.inserir_dinheiro() # Método da classe Meta() para inserir dinheiro para fazer compras no supermercado
-        except (
-
-            ModuleNotFoundError,
-            ImportError, 
-            ImportWarning
-
-        ):
-            print('Houve um erro ao importar o método')
-
+    def __op__(self, opcao: int) -> int :
         while True:
-
-            # menu1 = Menu() # IntÂncia o Menu()
-            self.menu_secundario() # Chama o método menu secundário na classe Menu()
-            while True:
-                try:
-                    opcao = int(input('Digite sua opcão: '))
-                    st('cls') # Não usar esta função, pois ele corrompe o app
-                    if opcao:
-                        break
-                except ValueError:
-                    print('Digite uma opção válida')
-                    sp(1)
-                    st('cls') # Não usar esta função, pois ele corrompe o app
-                    self.menu_secundario() # Chama o método menu secundário na classe Menu()
             if opcao == 1:
                 while True:
                     print(f'''{("PRODUTOS:")}{("VALORES:"):>28}{("QUANTIDADES:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}
-\033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
-\033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
-\033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
-\033[35m[4]\033[m \033[36mVoltar ao menu de compras\033[m
-                ''')    
+                        \033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
+                        \033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
+                        \033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
+                        \033[35m[4]\033[m \033[36mVoltar ao menu de compras\033[m
+                                        ''')    
 
                     while True:
                         try:
@@ -73,11 +47,11 @@ class Mercado(Meta, MetaMain):
                             sp(1)
                             st('cls') # Não usar esta função, pois ele corrompe o app
                             print(f'''{("PRODUTOS:")}{("VALORES:"):>28}{("QUANTIDADES:"):>25}{("TOTAL:"):>26} {("DATA:"):>20}
-\033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
-\033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
-\033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
-\033[35m[4]\033[m \033[36mVoltar ao menu de compras\033[m
-                ''') 
+                            \033[35m[1]\033[m \033[36m{(self.Natural)} Unds Natural {("R$3.00"):>30}\033[m
+                            \033[35m[2]\033[m \033[36m{self.Refri} Unds Refri {("R$5.00"):>30}\033[m
+                            \033[35m[3]\033[m \033[36m{self.Alcoólica} Unds Alcoólica {("R$50.00"):>30}\033[m
+                            \033[35m[4]\033[m \033[36mVoltar ao menu de compras\033[m
+                                            ''') 
 
                     if opcao2 == 4:
                         break
@@ -256,13 +230,13 @@ class Mercado(Meta, MetaMain):
                 print('Você escolheu EletroEletrônico')
                 while True: #
                     print(f'''{("PRODUTO")} {("VALOR"):>50}
-\033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
-\033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
-\033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
-\033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
-\033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
-\033[35m[6]\033[m \033[36mVoltar ao menu de compras\033[m
-                ''')
+                        \033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
+                        \033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
+                        \033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
+                        \033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
+                        \033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
+                        \033[35m[6]\033[m \033[36mVoltar ao menu de compras\033[m
+                                        ''')
 
                     while True:
                         try:
@@ -275,13 +249,13 @@ class Mercado(Meta, MetaMain):
                             sp(1)
                             st('cls') # Não usar esta função, pois ele corrompe o app
                             print(f'''{("PRODUTO")} {("VALOR"):>50}
-\033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
-\033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
-\033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
-\033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
-\033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
-\033[35m[6]\033[m \033[36mVoltar ao menu de compras\033[m
-                ''')
+                                \033[35m[1]\033[m \033[36m{(self.SamsungJ8)} Unds Samsung Galaxy J8 {("R$1500.00"):>30}\033[m
+                                \033[35m[2]\033[m \033[36m{self.SamsungJ7} Unds Samsung Galaxy J7 {("R$1300.00"):>30}\033[m
+                                \033[35m[3]\033[m \033[36m{self.SamsungJ6} Unds Samsung Galaxy J6 {("R$1000.00"):>30}\033[m
+                                \033[35m[4]\033[m \033[36m{self.iphone} Unds Iphone  {("R$3000.00"):>40}\033[m
+                                \033[35m[5]\033[m \033[36m{self.smartTVLG} Unds Smart TV LG {("R$2000.00"):>36}\033[m
+                                \033[35m[6]\033[m \033[36mVoltar ao menu de compras\033[m
+                                                ''')
 
                     if opcao2 == 6:
                         print(f'O seu troco é: R${self.dinheiro} reais\n')
@@ -621,4 +595,35 @@ class Mercado(Meta, MetaMain):
             else:
                 print('Escolha uma opção de 1 até 6')
                 sp(1)
-                st('cls') # Não usar esta função, pois ele corrompe o app
+                st('cls')  # Não usar esta função, pois ele corrompe o app
+
+    def comprar(self, arquivo: int): # método para comprar coisas no mercado
+        # 
+        try:
+            self.inserir_dinheiro() # Método da classe Meta() para inserir dinheiro para fazer compras no supermercado
+        except (
+
+            ModuleNotFoundError,
+            ImportError, 
+            ImportWarning
+
+        ):
+            print('Houve um erro ao importar o método')
+
+        while True:
+
+            # menu1 = Menu() # IntÂncia o Menu()
+            self.menu_secundario() # Chama o método menu secundário na classe Menu()
+            while True:
+                try:
+                    opcao = int(input('Digite sua opcão: '))
+                    st('cls') # Não usar esta função, pois ele corrompe o app
+                    if opcao:
+                        break
+                except ValueError:
+                    print('Digite uma opção válida')
+                    sp(1)
+                    st('cls') # Não usar esta função, pois ele corrompe o app
+                    self.menu_secundario()  # Chama o método menu secundário na classe Menu()
+            self.__op__(opcao)
+                

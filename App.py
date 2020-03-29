@@ -22,7 +22,7 @@ except (ModuleNotFoundError, ImportError, ImportWarning):
     print('Módulo não encontrado ou importação incorreta')
 # st('cls') # Não usar esta função, pois ele corrompe o app
 
-class Mercado(Meta, MetaMain):
+class AppTeste(Meta, MetaMain, Mercado):
     total_compras = 0
     def __init__(self):
         super().__init__()
@@ -54,6 +54,8 @@ class Mercado(Meta, MetaMain):
                     print('Digite uma opção válida')
                     sp(1)
                     st('cls') # Não usar esta função, pois ele corrompe o app
-                    self.menu_secundario() # Chama o método menu secundário na classe Menu()
+                    self.menu_secundario()  # Chama o método menu secundário na classe Menu()
+            
+            self.__op__(opcao)
                     
             

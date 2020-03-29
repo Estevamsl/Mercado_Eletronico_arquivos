@@ -2,7 +2,7 @@
 try:
 
     from menu import Menu
-    from main import Mercado
+    from App import AppTeste
     from os import(
     
         system as st,
@@ -17,7 +17,7 @@ except (ModuleNotFoundError, ImportError, ImportWarning):
     print('\033[31mNão foi possível importar os módulos\033[m\n')
 
 
-class Main(Mercado, MetaProjeto):
+class Main(AppTeste):
     def __init__(self):
         super().__init__()
 
