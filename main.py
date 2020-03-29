@@ -2,6 +2,12 @@ try:
 
     from meta import Meta
     from time import sleep as sp
+
+    from abc import (
+        ABC,
+        abstractmethod
+    )
+    
     from interface import MetaMain
     from os import(
         
@@ -557,7 +563,7 @@ class Mercado(Meta, MetaMain):
                             a.write('\n')
                             # a.write(f'TOTAL DE DINHEIRO QUE O USUÁRIO INFORMOU: R${(self.dinheiro)}\n')
                             # a.write(f'TROCO: R${self.tot_compras_em_reais - self.dinheiro}\n')
-                            a.write(f'TOTAL GASTO NA COMPRA:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00 Reais\n')
+                            a.write(f'TOTAL GASTO NA COMPRA:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00\n')
                             a.write(f'DIA DA COMPRA:                                                                                    {(self.atual)}\n')
                             a.write('=-='*36)
                             a.write('\n')
@@ -565,7 +571,7 @@ class Mercado(Meta, MetaMain):
                             if self.total > 1:
                                 try:
                                     a.write(f'\nQUANTIDADE TOTAL DAS COMPRAS: {(self.total):>22} COMPRAS\n')
-                                    a.write(f'TOTAL GASTO NAS COMPRAS:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00 Reais\n')
+                                    a.write(f'TOTAL GASTO NAS COMPRAS:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00\n')
                                     a.write(f'DIA DAS COMPRAS:                                                                                  {(self.atual)}\n')
                                     a.write('=-='*36)
                                     a.write('\n')
@@ -576,7 +582,7 @@ class Mercado(Meta, MetaMain):
                             else:
                                 try:
                                     a.write(f'\nQUANTIDADE TOTAL DA COMPRA: {(self.total):>22} COMPRA\n')
-                                    a.write(f'TOTAL GASTO NA COMPRA:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00 Reais\n')
+                                    a.write(f'TOTAL GASTO NA COMPRA:{("R$"):>60}{(self.tot_compras_em_reais):>1}.00\n')
                                     a.write(f'DIA DA COMPRA:                                                                                    {(self.atual)}\n')
                                     a.write('=-='*36)
                                     a.write('\n')
@@ -594,6 +600,7 @@ class Mercado(Meta, MetaMain):
                     # sp(1)
                     st('cls') # Não usar esta função, pois ele corrompe o app
                 self.dinheiro = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
+                self.tot_compras_em_reais = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
                 self.qtd_Natural = self.qtd_Refri = self.qtd_Alcoólica = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
                 self.qtd_SamsungJ8 = self.qtd_SamsungJ7 = self.qtd_SamsungJ6 = self.qtd_iphone = self.qtd_smartTVLG = 0 # depois que eu sair de fazer compras, o dinheiro vai setar em zero
                 self.total = 0 # depois que fechar de comprar, zera o total das compras
@@ -608,6 +615,7 @@ class Mercado(Meta, MetaMain):
                 st('cls') # Não usar esta função, pois ele corrompe o app
 
                 self.total = 0
+                self.chamar_arquivo(arquivo)
                 break
 
             else:
